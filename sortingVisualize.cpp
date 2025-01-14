@@ -1,5 +1,5 @@
 // It sorts a set of numbers in a vector defined by user input using a sorting algorithm chosen by user input.
-#include "globalVar.hpp"
+#include "global.hpp"
 #include <iostream>
 #include <string>
 #include <algorithm>
