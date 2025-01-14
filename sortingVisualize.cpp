@@ -102,7 +102,7 @@ int main()
 
             if(choice == 'o')
             {
-                cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n\n";
+                cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n" << "i = insertion sort" << "\n\n";
             }
             else if(choice == 's')
             {
@@ -114,6 +114,12 @@ int main()
             {
                 cout << "\n";
                 algos.bubble(toBeSorted);
+                break;
+            }
+            else if(choice == 'i')
+            {
+                cout << "\n";
+                algos.insertion(toBeSorted);
                 break;
             }
         }
