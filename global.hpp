@@ -12,6 +12,7 @@ char choice;
 vector<int> toBeSorted;
 bool sorted = true;
 int n;
+int n2;
 int temp;
 
 class sortingAlgos
@@ -69,6 +70,31 @@ public:
             }
 
             swap(toBeSorted[lo], toBeSorted[i]);
+        }
+
+        for(int i=0; i<n; i++)
+        {
+            cout << toBeSorted[i] << endl;
+        }
+    }
+    void insertion(vector<int> toBeSorted)
+    {
+        n = toBeSorted.size();
+        int i = 1;
+
+        while(i<n)
+        {
+            int k = toBeSorted[i];
+            int j = i;
+
+            while(j>0 && toBeSorted[j-1]>k)
+            {
+                toBeSorted[j] = toBeSorted[j-1];
+                j = j-1;
+            }
+
+            toBeSorted[j] = k;
+            i++;
         }
 
         for(int i=0; i<n; i++)
