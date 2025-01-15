@@ -19,7 +19,7 @@ using namespace std;
 
 void getToBeSorted()
 {
-    cout << "Enter integers. Type any letter to begin sorting (Number cannot exceed 2147483647 & no commas)" << "\n\n";
+    cout << "Enter integers. Type 'p' to begin sorting (Number cannot exceed 2147483647 & no commas)" << "\n\n";
 
     while(1)
     {
@@ -100,27 +100,95 @@ int main()
         {
             cin >> choice;
 
-            if(choice == 'o')
+            if(choice == 'o' || choice == 'O')
             {
-                cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n" << "i = insertion sort" << "\n\n";
+                cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n"
+                << "i = insertion sort" << "\n" << "g = gnome sort" << "\n\n";
             }
-            else if(choice == 's')
+            else if(choice == 's' || choice == 'S')
             {
                 cout << "\n";
                 algos.selection(toBeSorted);
+                cout << "\n";
                 break;
             }
-            else if(choice == 'b')
+            else if(choice == 'b' || choice == 'B')
             {
                 cout << "\n";
                 algos.bubble(toBeSorted);
+                cout << "\n";
                 break;
             }
-            else if(choice == 'i')
+            else if(choice == 'i' || choice == 'I')
             {
                 cout << "\n";
                 algos.insertion(toBeSorted);
+                cout << "\n";
                 break;
+            }
+            else if(choice == 'g' || choice == 'G')
+            {
+                cout << "\n";
+                algos.gnome(toBeSorted);
+                cout << "\n";
+                break;
+            }
+        }
+
+        while(1)
+        {
+            cout << "Repeat? Type y if so" << "\n";
+
+            cin >> repeat;
+
+            if(repeat == 'y' || repeat == 'Y')
+            {
+                toBeSorted.clear();
+                cout << "\n";
+
+                getToBeSorted();
+                check();
+
+                cout << "Choose a sorting algorithm. Press o to see options" << "\n";
+
+                while(1)
+                {
+                    cin >> choice;
+
+                    if(choice == 'o' || choice == 'O')
+                    {
+                        cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n"
+                        << "i = insertion sort" "\n" << "g = gnome sort" << "\n\n";
+                    }
+                    else if(choice == 's' || choice == 'S')
+                    {
+                        cout << "\n";
+                        algos.selection(toBeSorted);
+                        cout << "\n";
+                        break;
+                    }
+                    else if(choice == 'b' || choice == 'B')
+                    {
+                        cout << "\n";
+                        algos.bubble(toBeSorted);
+                        cout << "\n";
+                        break;
+                    }
+                    else if(choice == 'i' || choice == 'I')
+                    {
+                        cout << "\n";
+                        algos.insertion(toBeSorted);
+                        cout << "\n";
+                        break;
+                    }
+                    else if(choice == 'g' || choice == 'G')
+                    {
+                        cout << "\n";
+                        algos.gnome(toBeSorted);
+                        cout << "\n";
+                        break;
+                    }
+                }
             }
         }
     }
