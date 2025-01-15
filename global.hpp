@@ -12,7 +12,6 @@ char choice;
 vector<int> toBeSorted;
 bool sorted = true;
 int n;
-int n2;
 int temp;
 
 class sortingAlgos
