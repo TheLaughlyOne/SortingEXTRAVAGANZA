@@ -9,6 +9,7 @@ using namespace std;
 
 int sortInt;
 char choice;
+char repeat;
 vector<int> toBeSorted;
 bool sorted = true;
 int n;
@@ -94,6 +95,29 @@ public:
 
             toBeSorted[j] = k;
             i++;
+        }
+
+        for(int i=0; i<n; i++)
+        {
+            cout << toBeSorted[i] << endl;
+        }
+    }
+    void gnome(vector<int> toBeSorted)
+    {
+        n = toBeSorted.size();
+        int i = 0;
+
+        while(i<n)
+        {
+           if(i == 0 || toBeSorted[i] >= toBeSorted[i-1])
+           {
+               i++;
+           }
+           else
+           {
+               swap(toBeSorted[i], toBeSorted[i-1]);
+               i--;
+           }
         }
 
         for(int i=0; i<n; i++)
