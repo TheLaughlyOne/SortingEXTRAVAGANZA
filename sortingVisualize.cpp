@@ -15,23 +15,21 @@
 #include <vector>
 #include <random>
 
-using namespace std;
-
 void getToBeSorted()
 {
-    cout << "Enter integers. Type any letter to begin sorting (Number cannot exceed 2,147,483,647)" << "\n\n";
+    std::cout << "Enter integers. Type any letter to begin sorting (Number cannot exceed 2,147,483,647)" << "\n\n";
 
     while(1)
     {
-        cin >> sortInt; // repeatedly asks for user input
+        std::cin >> sortInt; // repeatedly asks for user input
 
         toBeSorted.push_back(sortInt);
 
-        cout << "\n";
+        std::cout << "\n";
 
-        if(cin.fail()) // until they type a letter
+        if(std::cin.fail()) // until they type a letter
         {
-            cin.clear();
+            std::cin.clear();
             toBeSorted.pop_back(); // removes the letter from the vector, so that only the numbers are being sorted
             break; // ends while loop
         }
@@ -91,16 +89,16 @@ void sorter()
 
     if(sorted == false || sorted == true)
     {
-        cout << "Choose a sorting algorithm. Press o to see options" << "\n";
+        std::cout << "Choose a sorting algorithm. Press o to see options" << "\n";
 
         while(1)
         {
-            cin >> choice;
+            std::cin >> choice;
 
             // if they inputted o, it will show the options
             if(choice == 'o' || choice == 'O')
             {
-                cout << "\n" << "Options:" << "\n"
+                std::cout << "\n" << "Options:" << "\n"
                 << "b = bubble sort" << "\n"
                 << "s = selection sort" << "\n"
                 << "i = insertion sort" << "\n"
@@ -110,57 +108,57 @@ void sorter()
             // if they inputted s, it will perform selection sort, ignoring capitals
             else if(choice == 's' || choice == 'S')
             {
-                cout << "\n";
+                std::cout << "\n";
                 algos.selection(toBeSorted);
-                cout << "\n";
+                std::cout << "\n";
                 break;
             }
             // if they inputted b, it will perform bubble sort, ignoring capitals
             else if(choice == 'b' || choice == 'B')
             {
-                cout << "\n";
+                std::cout << "\n";
                 algos.bubble(toBeSorted);
-                cout << "\n";
+                std::cout << "\n";
                 break;
             }
             // if they inputted i, it will perform insertion sort, ignoring capitals
             else if(choice == 'i' || choice == 'I')
             {
-                cout << "\n";
+                std::cout << "\n";
                 algos.insertion(toBeSorted);
-                cout << "\n";
+                std::cout << "\n";
                 break;
             }
             // if they inputted g, it will perform gnome sort, ignoring capitals
             else if(choice == 'g' || choice == 'G')
             {
-                cout << "\n";
+                std::cout << "\n";
                 algos.gnome(toBeSorted);
-                cout << "\n";
+                std::cout << "\n";
                 break;
             }
             // if they inputted p, it will perform parity sort, ignoring capitals
             else if(choice == 'p' || choice == 'P')
             {
-                cout << "\n";
+                std::cout << "\n";
                 algos.parity(toBeSorted);
-                cout << "\n";
+                std::cout << "\n";
                 break;
             }
         }
 
         while(1)
         {
-            cout << "Repeat? Type y if so" << "\n";
+            std::cout << "Repeat? Type y if so" << "\n";
 
-            cin >> repeat;
+            std::cin >> repeat;
 
             /* if the user inputs y, it will recurse the sorter function onto itself,
             and will run the getToBeSorted function and the check function as well*/
             if(repeat == 'y' || repeat == 'Y')
             {
                 toBeSorted.clear(); // clears all elements from the vector, to be filled in again
-                cout << "\n";
+                std::cout << "\n";
 
                 getToBeSorted();
                 check();
