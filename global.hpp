@@ -5,13 +5,11 @@
 #include <cmath>
 #include <algorithm>
 
-using namespace std;
-
 // global variables
 int sortInt;
 char choice;
 char repeat;
-vector<int> toBeSorted;
+std::vector<int> toBeSorted;
 bool sorted = true;
 int n;
 int temp;
@@ -20,7 +18,7 @@ class sortingAlgos
 {
 public:
     // bubble sort
-    void bubble(vector<int> toBeSorted)
+    void bubble(std::vector<int> toBeSorted)
     {
         n = toBeSorted.size();
         int p = 0;
@@ -52,11 +50,11 @@ public:
         // outputs the (now) sorted set
         for(int i=0; i<n; i++)
         {
-            cout << toBeSorted[i] << endl;
+            std::cout << toBeSorted[i] << std::endl;
         }
     }
     // selection sort
-    void selection(vector<int> toBeSorted)
+    void selection(std::vector<int> toBeSorted)
     {
         int n = toBeSorted.size();
         int lo;
@@ -73,16 +71,16 @@ public:
                 }
             }
 
-            swap(toBeSorted[lo], toBeSorted[i]);
+            std::swap(toBeSorted[lo], toBeSorted[i]);
         }
 
         for(int i=0; i<n; i++)
         {
-            cout << toBeSorted[i] << endl;
+            std::cout << toBeSorted[i] << std::endl;
         }
     }
     // insertion sort
-    void insertion(vector<int> toBeSorted)
+    void insertion(std::vector<int> toBeSorted)
     {
         n = toBeSorted.size();
         int i = 1;
@@ -104,11 +102,11 @@ public:
 
         for(int i=0; i<n; i++)
         {
-            cout << toBeSorted[i] << endl;
+            std::cout << toBeSorted[i] << std::endl;
         }
     }
     // gnome sort
-    void gnome(vector<int> toBeSorted)
+    void gnome(std::vector<int> toBeSorted)
     {
         n = toBeSorted.size();
         int i = 0;
@@ -121,17 +119,17 @@ public:
            }
            else
            {
-               swap(toBeSorted[i], toBeSorted[i-1]);
+               std::swap(toBeSorted[i], toBeSorted[i-1]);
                i--;
            }
         }
 
         for(int i=0; i<n; i++)
         {
-            cout << toBeSorted[i] << endl;
+            std::cout << toBeSorted[i] << std::endl;
         }
     }
-    void parity(vector<int> toBeSorted)
+    void parity(std::vector<int> toBeSorted)
     {
         n = toBeSorted.size();
         sorted = false;
@@ -167,7 +165,7 @@ public:
 
         for(int i=0; i<n; i++)
         {
-            cout << toBeSorted[i] << endl;
+            std::cout << toBeSorted[i] << std::endl;
         }
     }
 };
