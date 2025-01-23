@@ -1,4 +1,4 @@
-// It sorts a set of numbers in a vector defined by user input using a sorting algorithm chosen by user input.
+// It sorts a set of numbers in a vector defined by user input using a sorting algorithm chosen by user input
 #include "global.hpp"
 #include <iostream>
 #include <string>
@@ -19,29 +19,30 @@ using namespace std;
 
 void getToBeSorted()
 {
-    cout << "Enter integers. Type 'p' to begin sorting (Number cannot exceed 2147483647 & no commas)" << "\n\n";
+    cout << "Enter integers. Type any letter to begin sorting (Number cannot exceed 2,147,483,647)" << "\n\n";
 
     while(1)
     {
-        cin >> sortInt;
+        cin >> sortInt; // repeatedly asks for user input
 
         toBeSorted.push_back(sortInt);
 
         cout << "\n";
 
-        if(cin.fail())
+        if(cin.fail()) // until they type a letter
         {
             cin.clear();
-            toBeSorted.pop_back();
-            break;
+            toBeSorted.pop_back(); // removes the letter from the vector, so that only the numbers are being sorted
+            break; // ends while loop
         }
     }
 }
 
-void check()
+void check() // checks whether the set is sorted or not
 {
     for(int i=0; i<toBeSorted.size(); i++)
     {
+        // if the vector is below 2 elements, it is already sorted (obvious)
         if(toBeSorted.size() >= 2)
         {
         }
@@ -51,6 +52,7 @@ void check()
             break;
         }
 
+        // if the ending element is lesser than the current one, the vector is not sorted
         if(toBeSorted.back() >= toBeSorted[i])
         {
         }
@@ -60,6 +62,8 @@ void check()
             break;
         }
 
+        /* for a set of numbers to be sorted, the current element must be larger than the element before it,
+        this does not allply when the loop starts because there is no element before it*/
         if(toBeSorted[i] >= toBeSorted[i-1] || i == 0)
         {
         }
@@ -69,6 +73,7 @@ void check()
             break;
         }
 
+        // if the starting element is greater than the current one, the vector is not sorted
         if(toBeSorted[i] >= toBeSorted.front())
         {
         }
@@ -78,21 +83,13 @@ void check()
             break;
         }
     }
-
-    if(sorted == true)
-    {
-        cout << "Already Sorted/Invalid." << endl << endl;
-        return;
-    }
 }
 
-int main()
+void sorter()
 {
-    getToBeSorted();
-    check();
-    sortingAlgos algos;
+    sortingAlgos algos; // Getting the class with the sorting algorithms
 
-    if(sorted == false)
+    if(sorted == false || sorted == true)
     {
         cout << "Choose a sorting algorithm. Press o to see options" << "\n";
 
@@ -100,11 +97,17 @@ int main()
         {
             cin >> choice;
 
+            // if they inputted o, it will show the options
             if(choice == 'o' || choice == 'O')
             {
-                cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n"
-                << "i = insertion sort" << "\n" << "g = gnome sort" << "\n\n";
+                cout << "\n" << "Options:" << "\n"
+                << "b = bubble sort" << "\n"
+                << "s = selection sort" << "\n"
+                << "i = insertion sort" << "\n"
+                << "g = gnome sort" << "\n"
+                << "p = parity sort" << "\n\n";
             }
+            // if they inputted s, it will perform selection sort, ignoring capitals
             else if(choice == 's' || choice == 'S')
             {
                 cout << "\n";
@@ -112,6 +115,7 @@ int main()
                 cout << "\n";
                 break;
             }
+            // if they inputted b, it will perform bubble sort, ignoring capitals
             else if(choice == 'b' || choice == 'B')
             {
                 cout << "\n";
@@ -119,6 +123,7 @@ int main()
                 cout << "\n";
                 break;
             }
+            // if they inputted i, it will perform insertion sort, ignoring capitals
             else if(choice == 'i' || choice == 'I')
             {
                 cout << "\n";
@@ -126,10 +131,19 @@ int main()
                 cout << "\n";
                 break;
             }
+            // if they inputted g, it will perform gnome sort, ignoring capitals
             else if(choice == 'g' || choice == 'G')
             {
                 cout << "\n";
                 algos.gnome(toBeSorted);
+                cout << "\n";
+                break;
+            }
+            // if they inputted p, it will perform parity sort, ignoring capitals
+            else if(choice == 'p' || choice == 'P')
+            {
+                cout << "\n";
+                algos.parity(toBeSorted);
                 cout << "\n";
                 break;
             }
@@ -141,57 +155,28 @@ int main()
 
             cin >> repeat;
 
+            /* if the user inputs y, it will recurse the sorter function onto itself,
+            and will run the getToBeSorted function and the check function as well*/
             if(repeat == 'y' || repeat == 'Y')
             {
-                toBeSorted.clear();
+                toBeSorted.clear(); // clears all elements from the vector, to be filled in again
                 cout << "\n";
 
                 getToBeSorted();
                 check();
-
-                cout << "Choose a sorting algorithm. Press o to see options" << "\n";
-
-                while(1)
-                {
-                    cin >> choice;
-
-                    if(choice == 'o' || choice == 'O')
-                    {
-                        cout << "\n" << "Options:" << "\n" << "b = bubble sort" << "\n" << "s = selection sort" << "\n"
-                        << "i = insertion sort" "\n" << "g = gnome sort" << "\n\n";
-                    }
-                    else if(choice == 's' || choice == 'S')
-                    {
-                        cout << "\n";
-                        algos.selection(toBeSorted);
-                        cout << "\n";
-                        break;
-                    }
-                    else if(choice == 'b' || choice == 'B')
-                    {
-                        cout << "\n";
-                        algos.bubble(toBeSorted);
-                        cout << "\n";
-                        break;
-                    }
-                    else if(choice == 'i' || choice == 'I')
-                    {
-                        cout << "\n";
-                        algos.insertion(toBeSorted);
-                        cout << "\n";
-                        break;
-                    }
-                    else if(choice == 'g' || choice == 'G')
-                    {
-                        cout << "\n";
-                        algos.gnome(toBeSorted);
-                        cout << "\n";
-                        break;
-                    }
-                }
+                sorter();
             }
         }
     }
+}
+
+int main()
+{
+    // int main runs all of these functions
+    getToBeSorted();
+    check();
+    sorter();
+    sortingAlgos algos;
 
     sleep(10000);
     return 0;
