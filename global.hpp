@@ -7,6 +7,7 @@
 
 using namespace std;
 
+// global variables
 int sortInt;
 char choice;
 char repeat;
@@ -18,6 +19,7 @@ int temp;
 class sortingAlgos
 {
 public:
+    // bubble sort
     void bubble(vector<int> toBeSorted)
     {
         n = toBeSorted.size();
@@ -47,11 +49,13 @@ public:
             }
         }
 
+        // outputs the (now) sorted set
         for(int i=0; i<n; i++)
         {
             cout << toBeSorted[i] << endl;
         }
     }
+    // selection sort
     void selection(vector<int> toBeSorted)
     {
         int n = toBeSorted.size();
@@ -77,6 +81,7 @@ public:
             cout << toBeSorted[i] << endl;
         }
     }
+    // insertion sort
     void insertion(vector<int> toBeSorted)
     {
         n = toBeSorted.size();
@@ -102,6 +107,7 @@ public:
             cout << toBeSorted[i] << endl;
         }
     }
+    // gnome sort
     void gnome(vector<int> toBeSorted)
     {
         n = toBeSorted.size();
@@ -118,6 +124,45 @@ public:
                swap(toBeSorted[i], toBeSorted[i-1]);
                i--;
            }
+        }
+
+        for(int i=0; i<n; i++)
+        {
+            cout << toBeSorted[i] << endl;
+        }
+    }
+    void parity(vector<int> toBeSorted)
+    {
+        n = toBeSorted.size();
+        sorted = false;
+
+        while(!sorted)
+        {
+            sorted = true;
+
+            for(int i=1; i<n-1; i=i+2)
+            {
+                if(toBeSorted[i]>toBeSorted[i+1])
+                {
+                    temp = toBeSorted[i];
+                    toBeSorted[i] = toBeSorted[i+1];
+                    toBeSorted[i+1] = temp;
+
+                    sorted = false;
+                }
+            }
+
+            for(int i=0; i<n-1; i=i+2)
+            {
+                if(toBeSorted[i]>toBeSorted[i+1])
+                {
+                    temp = toBeSorted[i];
+                    toBeSorted[i] = toBeSorted[i+1];
+                    toBeSorted[i+1] = temp;
+
+                    sorted = false;
+                }
+            }
         }
 
         for(int i=0; i<n; i++)
