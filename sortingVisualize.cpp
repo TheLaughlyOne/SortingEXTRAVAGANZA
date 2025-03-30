@@ -17,7 +17,8 @@
 
 void getToBeSorted()
 {
-    std::cout << "Enter integers. Type any letter to begin sorting (Number cannot exceed 2,147,483,647)" << "\n\n";
+    std::cout << "Enter integers. Type any letter to begin sorting, press o to see your options before you begin sorting"
+    << "(Number cannot exceed 2,147,483,647)" << "\n\n";
 
     while(1)
     {
